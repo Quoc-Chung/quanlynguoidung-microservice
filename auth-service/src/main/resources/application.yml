@@ -30,3 +30,17 @@ eureka:
 
   instance:
     hostname: localhost
+
+cors:
+  allowed-origins:
+    - http://localhost:3000   # React
+    - http://localhost:5173   # Vite/Vue
+    - http://localhost:4200   # Angular
+
+jwt:
+  secret: 9f3c7a1d6e2b8c4f5a7d9e1b3c6f8a2d4e7c1b5f9a3d6e8c2f4b7a1d5e9c3f6
+  expiration: 86400000
+
+logging:
+  level:
+    org.springframework.security: DEBUG
