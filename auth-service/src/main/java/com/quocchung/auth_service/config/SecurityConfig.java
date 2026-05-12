@@ -15,14 +15,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-  private final JwtAuthFilter jwtAuthFilter;
   private final MyUserDetailsService userDetailsService;
   private static final String[] PUBLIC_URLS = {
       "/api/auth/register",
@@ -48,9 +46,7 @@ public class SecurityConfig {
             .requestMatchers(PUBLIC_URLS).permitAll()
             .anyRequest().authenticated()
         )
-        .authenticationProvider(authenticationProvider())
-        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-
+        .authenticationProvider(authenticationProvider());
     return http.build();
   }
   @Bean
@@ -60,7 +56,6 @@ public class SecurityConfig {
     provider.setPasswordEncoder(passwordEncoder());
     return provider;
   }
-
 
   @Bean
   public AuthenticationManager authenticationManager(AuthenticationConfiguration config)

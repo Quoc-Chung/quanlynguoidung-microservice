@@ -16,6 +16,7 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
 
+
 server:
   port: 8081
 
@@ -29,7 +30,10 @@ eureka:
 
   instance:
     hostname: localhost
+    prefer-ip-address: true
 
 app:
   feign:
     address-service: http://localhost:8082
+
+
