@@ -1,5 +1,6 @@
 package com.quocchung.employee_service.client;
 
+import com.quocchung.employee_service.client.fallback.AddressClientFallback;
 import com.quocchung.employee_service.config.FeignConfig;
 import com.quocchung.employee_service.model.dto.AddressDTO;
 import java.util.List;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
     name = "address-service",
     url = "${app.feign.address-service:http://localhost:8082}",
     path = "/api/address",
-    configuration = FeignConfig.class
+    configuration = FeignConfig.class,
+    fallback = AddressClientFallback.class
 )
 public interface AddressClient {
 

@@ -1,6 +1,7 @@
 package com.quocchung.address_service.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.quocchung.address_service.Exception.BadRequestException;
 import com.quocchung.address_service.Exception.CustomException;
 import com.quocchung.address_service.Exception.ErrorResponse;
 import feign.Response;
@@ -19,8 +20,13 @@ public class CustomErrorDecoder implements ErrorDecoder {
 
   @Override
   public Exception decode(String s, Response response) {
+    Integer status = response.status();
+    if(status == 503){
+      throw new BadRequestException("Employee not active. Please try again later");
+    }
+
     ObjectMapper objectMapper = new ObjectMapper();  // Tạo bộ convert JSON
-    objectMapper.findAndRegisterModules(); // Tự động bật hỗ trợ LocalDate, Optional, Java 8 time
+    objectMapper.findAndRegisterModules();           // Tự động bật hỗ trợ LocalDate, Optional, Java 8 time
 
     try(InputStream is  = response.body().asInputStream()){
       // Đọc dữ liệu JSON và chuyển thành object Java.

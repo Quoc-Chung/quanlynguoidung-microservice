@@ -1,12 +1,14 @@
 package com.quocchung.employee_service.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.quocchung.employee_service.Exception.BadRequestException;
 import com.quocchung.employee_service.Exception.CustomException;
 import com.quocchung.employee_service.Exception.ErrorResponse;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import java.io.IOException;
 import java.io.InputStream;
+
 
 /**
  * implement ErrorDecoder của OpenFeign.
@@ -19,6 +21,11 @@ public class CustomErrorDecoder implements ErrorDecoder {
 
   @Override
   public Exception decode(String s, Response response) {
+    int status = response.status();
+    if(status == 500){
+      return new BadRequestException("Address service is down .Please try again later");
+    }
+
     ObjectMapper objectMapper = new ObjectMapper();  // Tạo bộ convert JSON
     objectMapper.findAndRegisterModules(); // Tự động bật hỗ trợ LocalDate, Optional, Java 8 time
 

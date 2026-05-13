@@ -81,8 +81,6 @@ public class AddressServiceImpl implements AddressService {
     if(employee == null){
       throw new ResourceNotFoundException("User not found with id : "+ addressRequest.getEmployeeId()) ;
     }
-
-
     for (AddressRequestDTO dto : addressRequest.getAddressRequestDTOList()) {
 
       Address address = addressRepository.findById(dto.getId())
