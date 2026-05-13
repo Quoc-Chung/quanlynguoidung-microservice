@@ -1,6 +1,6 @@
 package com.quocchung.address_service.service.impl;
 
-import com.quocchung.address_service.Exception.ResourceNotFoundException;
+
 import com.quocchung.address_service.client.EmployeeClient;
 import com.quocchung.address_service.model.dto.AddressDTO;
 import com.quocchung.address_service.model.dto.AddressRequest;
@@ -9,6 +9,7 @@ import com.quocchung.address_service.model.dto.EmployeeDTO;
 import com.quocchung.address_service.model.entity.Address;
 import com.quocchung.address_service.repository.AddressRepository;
 import com.quocchung.address_service.service.AddressService;
+import com.quocchung.common_lib.Exception.ResourceNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +33,7 @@ public class AddressServiceImpl implements AddressService {
 
     EmployeeDTO employee = employeeClient.getEmployee(addressRequest.getEmployeeId());
     if(employee == null){
-      throw new ResourceNotFoundException("User not found with id : "+ addressRequest.getEmployeeId()) ;
+      throw new ResourceNotFoundException("User not found with id : " + addressRequest.getEmployeeId()) ;
     }
 
     System.out.println("Thong tin nhan vien : "+ employee.getEmployeeName());

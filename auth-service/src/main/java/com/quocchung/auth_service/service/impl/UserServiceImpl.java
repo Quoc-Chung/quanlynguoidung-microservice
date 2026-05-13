@@ -1,6 +1,6 @@
 package com.quocchung.auth_service.service.impl;
 
-import com.quocchung.auth_service.Exception.CustomException;
+
 import com.quocchung.auth_service.model.dto.JwtTokenResponse;
 import com.quocchung.auth_service.model.dto.LoginRequest;
 import com.quocchung.auth_service.model.dto.RegisterRequest;
@@ -10,6 +10,7 @@ import com.quocchung.auth_service.repository.UserRepository;
 import com.quocchung.auth_service.service.MyUserDetailsService;
 import com.quocchung.auth_service.service.UserService;
 import com.quocchung.auth_service.utils.JwtUtils;
+import com.quocchung.common_lib.Exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService {
   @Override
   public UserDTO registerUser(RegisterRequest registerRequest) {
     if(userRepository.findByEmail(registerRequest.getEmail()).isPresent()){
-      throw new CustomException("User rearly exists with email : "+ registerRequest.getEmail());
+      throw new CustomException("User rearly exists with email : " + registerRequest.getEmail());
     }
     if(userRepository.findByUsername(registerRequest.getUsername()).isPresent()){
       throw new CustomException("User rearly exists with usename: "+ registerRequest.getUsername());

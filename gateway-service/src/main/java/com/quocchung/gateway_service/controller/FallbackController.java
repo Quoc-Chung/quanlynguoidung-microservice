@@ -1,6 +1,6 @@
 package com.quocchung.gateway_service.controller;
 
-import com.quocchung.gateway_service.Exception.ErrorResponse;
+import com.quocchung.common_lib.Exception.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;

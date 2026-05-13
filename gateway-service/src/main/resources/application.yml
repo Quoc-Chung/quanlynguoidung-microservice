@@ -1,6 +1,6 @@
 spring:
   application:
-    name: gateway-service
+    name: gateway-servic
   cloud:
     gateway:
       server:
@@ -26,8 +26,6 @@ spring:
                   args:
                       name: EMPLOYEE-SERVICE
                       fallbackUri: forward:/fallback/employee
-
-
 
             - id: address-service
               uri: lb://ADDRESS-SERVICE

@@ -1,7 +1,8 @@
 package com.quocchung.employee_service.client.fallback;
 
 
-import com.quocchung.employee_service.Exception.CustomException;
+
+import com.quocchung.common_lib.Exception.CustomException;
 import com.quocchung.employee_service.client.AddressClient;
 import com.quocchung.employee_service.model.dto.AddressDTO;
 import java.util.List;

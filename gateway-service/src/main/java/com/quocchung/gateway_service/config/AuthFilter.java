@@ -1,7 +1,7 @@
 package com.quocchung.gateway_service.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.quocchung.gateway_service.Exception.ErrorResponse;
+import com.quocchung.common_lib.Exception.ErrorResponse;
 import com.quocchung.gateway_service.utils.JwtUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;

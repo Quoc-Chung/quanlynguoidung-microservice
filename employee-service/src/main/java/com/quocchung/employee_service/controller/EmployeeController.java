@@ -1,6 +1,7 @@
 package com.quocchung.employee_service.controller;
 
-import com.quocchung.employee_service.Exception.MissingParameterException;
+
+import com.quocchung.common_lib.Exception.MissingParameterException;
 import com.quocchung.employee_service.model.dto.EmployeeDTO;
 import com.quocchung.employee_service.service.EmployeeService;
 import java.util.ArrayList;

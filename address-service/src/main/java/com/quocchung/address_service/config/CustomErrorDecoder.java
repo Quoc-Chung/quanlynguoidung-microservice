@@ -1,9 +1,9 @@
 package com.quocchung.address_service.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.quocchung.address_service.Exception.BadRequestException;
-import com.quocchung.address_service.Exception.CustomException;
-import com.quocchung.address_service.Exception.ErrorResponse;
+import com.quocchung.common_lib.Exception.BadRequestException;
+import com.quocchung.common_lib.Exception.CustomException;
+import com.quocchung.common_lib.Exception.ErrorResponse;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import java.io.IOException;

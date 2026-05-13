@@ -1,5 +1,6 @@
 package com.quocchung.employee_service.model.entity;
 
+import com.quocchung.common_lib.entity.AuditableEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,17 +8,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name="employee")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Employee {
+@SuperBuilder
+public class Employee extends AuditableEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

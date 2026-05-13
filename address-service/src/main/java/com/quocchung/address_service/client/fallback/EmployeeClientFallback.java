@@ -1,8 +1,9 @@
 package com.quocchung.address_service.client.fallback;
 
-import com.quocchung.address_service.Exception.BadRequestException;
+
 import com.quocchung.address_service.client.EmployeeClient;
 import com.quocchung.address_service.model.dto.EmployeeDTO;
+import com.quocchung.common_lib.Exception.BadRequestException;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -63,15 +63,6 @@ public class GlobalExceptionHandle {
     return new ResponseEntity<>(errorResponse , HttpStatus.BAD_REQUEST);
   }
 
-
-  @ExceptionHandler(UsernameNotFoundException.class)
-  public ResponseEntity<ErrorResponse> handleUsernameNotFoundException(UsernameNotFoundException ex){
-     ErrorResponse errorResponse =  ErrorResponse.builder().message(ex.getMessage())
-        .status(HttpStatus.NOT_FOUND)
-        .timestamp(LocalDateTime.now())
-        .build();
-    return  new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
-  }
   @ExceptionHandler(BadCredentialsException.class)
   public ResponseEntity<ErrorResponse> handleBadCredentialsException(
       BadCredentialsException ex) {
