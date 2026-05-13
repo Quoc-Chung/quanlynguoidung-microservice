@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: common-lib
+  datasource:
+    url: jdbc:mysql://localhost:3306/employee_db_v2?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh&allowPublicKeyRetrieval=true
+    username: root
+    password: Ch@/12345678
+    driver-class-name: com.mysql.cj.jdbc.Driver

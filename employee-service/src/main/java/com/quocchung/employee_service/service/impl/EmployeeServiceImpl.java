@@ -1,7 +1,7 @@
 package com.quocchung.employee_service.service.impl;
 
-import com.quocchung.employee_service.Exception.BadRequestException;
-import com.quocchung.employee_service.Exception.ResourceNotFoundException;
+import com.quocchung.common_lib.Exception.BadRequestException;
+import com.quocchung.common_lib.Exception.ResourceNotFoundException;
 import com.quocchung.employee_service.client.AddressClient;
 import com.quocchung.employee_service.model.dto.EmployeeDTO;
 import com.quocchung.employee_service.model.entity.Employee;

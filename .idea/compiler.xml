@@ -20,7 +20,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="address-service" options="-parameters" />
       <module name="auth-service" options="-parameters" />
-      <module name="common-lib" options="-parameters" />
+      <module name="common-lib" options="" />
       <module name="employee-service" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
