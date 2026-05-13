@@ -1,61 +1,19 @@
 spring:
   application:
     name: employee-service
-  datasource:
-    url: jdbc:mysql://localhost:3306/employee_db_v2?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh&allowPublicKeyRetrieval=true
-    username: root
-    password: Ch@/12345678
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update   # create / create-drop / validate / none
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.MySQL8Dialect
+  config:
+    import: "configserver:http://localhost:8888"
   cloud:
-    openfeign:
-      circuitbreaker:
-        enabled: true   # Bật circuit breaker cho Feign
+    config:
+      fail-fast: true         # crash ngay nếu không connect được Config Server
+      retry:
+          max-attempts: 6        # thử tối đa 6 lần
+          initial-interval: 1500 # lần đầu chờ 1.5 giây
+          max-interval: 3000     # chờ tối đa 3 giây mỗi lần
+          multiplier: 1.5        # mỗi lần chờ lâu hơn 1.5x
 
-resilience4j:
-  timelimiter:
-    instances:
-      address-service:
-        timeoutDuration: 5s
-
-  circuitbreaker:
-    instances:
-      address-service:
-        registerHealthIndicator: true
-        eventConsumerBufferSize: 10
-        slidingWindowType: COUNT_BASED
-        slidingWindowSize: 5
-        minimumNumberOfCalls: 5
-        failureRateThreshold: 50
-        waitDurationInOpenState: 6s
-        automaticTransitionFromOpenToHalfOpenEnabled: true
-        permittedNumberOfCallsInHalfOpenState: 3
-
-server:
-  port: 8081
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-
-  instance:
-    hostname: localhost
-    prefer-ip-address: true
-
-app:
-  feign:
-    address-service: http://localhost:8082
-
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health

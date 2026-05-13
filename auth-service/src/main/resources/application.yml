@@ -1,47 +1,18 @@
 spring:
   application:
     name: auth-service
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/auth_db_v2?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh&allowPublicKeyRetrieval=true
-    username: root
-    password: Ch@/12345678
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update   # create / create-drop / validate / none
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.MySQL8Dialect
-
-server:
-  port: 8083
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-
-  instance:
-    hostname: localhost
-    prefer-ip-address: true
-
-cors:
-  allowed-origins:
-    - http://localhost:3000   # React
-    - http://localhost:5173   # Vite/Vue
-    - http://localhost:4200   # Angular
-
-jwt:
-  secret: 9f3c7a1d6e2b8c4f5a7d9e1b3c6f8a2d4e7c1b5f9a3d6e8c2f4b7a1d5e9c3f6
-  expiration: 86400000
-
-logging:
-  level:
-    org.springframework.security: DEBUG
+  config:
+    import: "configserver:http://localhost:8888"
+  cloud:
+    config:
+      fail-fast: true         # crash ngay nếu không connect được Config Server
+      retry:
+        max-attempts: 6
+        initial-interval: 1500
+        max-interval: 3000
+        multiplier: 1.5
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health
